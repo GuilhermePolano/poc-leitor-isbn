@@ -1,0 +1,15 @@
+# Defaults
+* text=auto eol=lf
+
+# Scripts shell e arquivos servidos por container Linux precisam de LF
+*.sh        text eol=lf
+Dockerfile  text eol=lf
+*.conf      text eol=lf
+
+# Binários
+*.xlsx      binary
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.ico       binary

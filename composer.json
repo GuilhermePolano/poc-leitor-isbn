@@ -1,0 +1,22 @@
+{
+    "name": "bancos-sociais/poc-codigo-de-barras",
+    "description": "Consulta de livros via ISBN com exportação no formato HYB Integrador.",
+    "type": "project",
+    "require": {
+        "php": ">=8.1",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-pdo_mysql": "*",
+        "ext-mbstring": "*",
+        "phpoffice/phpspreadsheet": "^2.0",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

@@ -1,0 +1,17 @@
+/vendor/
+/.env
+/storage/exports/*
+!/storage/exports/.gitkeep
+/logs/*
+!/logs/.gitkeep
+.idea/
+.vscode/
+*.log
+
+# Docker volumes não devem ser versionados
+db_data/
+
+# Arquivos do SO
+Thumbs.db
+.DS_Store
+desktop.ini

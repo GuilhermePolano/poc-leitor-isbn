@@ -56,6 +56,7 @@ final class MySqlLivroRepository implements LivroRepository
             ':hyb_bem_produto'   => $hyb->bemProduto,
             ':hyb_unidade'       => $hyb->unidade,
             ':hyb_categoria'     => $hyb->categoria,
+            ':categoria_id'      => $hyb->categoriaId,
             ':hyb_ncm'           => $hyb->ncm,
             ':hyb_preco_venda'   => $hyb->precoVenda,
             ':hyb_estoque_minimo'=> $hyb->estoqueMinimo,
@@ -78,7 +79,7 @@ final class MySqlLivroRepository implements LivroRepository
             avaliacao_media, qtd_avaliacoes,
             payload_bruto, fonte_api, provider_origem,
             consultado_em, atualizado_em,
-            hyb_bem_produto, hyb_unidade, hyb_categoria, hyb_ncm,
+            hyb_bem_produto, hyb_unidade, hyb_categoria, categoria_id, hyb_ncm,
             hyb_preco_venda, hyb_estoque_minimo, hyb_referencia,
             hyb_patrimonio, hyb_depreciacao_pct, hyb_tipo,
             hyb_estoque_ini_qtd, hyb_estoque_ini_custo, hyb_descricao
@@ -92,7 +93,7 @@ final class MySqlLivroRepository implements LivroRepository
             :avaliacao_media, :qtd_avaliacoes,
             :payload_bruto, :fonte_api, :provider_origem,
             :consultado_em, :atualizado_em,
-            :hyb_bem_produto, :hyb_unidade, :hyb_categoria, :hyb_ncm,
+            :hyb_bem_produto, :hyb_unidade, :hyb_categoria, :categoria_id, :hyb_ncm,
             :hyb_preco_venda, :hyb_estoque_minimo, :hyb_referencia,
             :hyb_patrimonio, :hyb_depreciacao_pct, :hyb_tipo,
             :hyb_estoque_ini_qtd, :hyb_estoque_ini_custo, :hyb_descricao
@@ -131,6 +132,7 @@ final class MySqlLivroRepository implements LivroRepository
             hyb_bem_produto    = VALUES(hyb_bem_produto),
             hyb_unidade        = VALUES(hyb_unidade),
             hyb_categoria      = VALUES(hyb_categoria),
+            categoria_id       = VALUES(categoria_id),
             hyb_ncm            = VALUES(hyb_ncm),
             hyb_preco_venda    = VALUES(hyb_preco_venda),
             hyb_estoque_minimo = VALUES(hyb_estoque_minimo),
@@ -172,8 +174,21 @@ final class MySqlLivroRepository implements LivroRepository
 
     public function listar(int $limite, int $offset, array $filtros = []): array
     {
-        [$where, $params] = $this->montarWhere($filtros);
-        $sql = "SELECT * FROM livros {$where} ORDER BY atualizado_em DESC LIMIT :limite OFFSET :offset";
+        [$where, $params] = $this->montarWhere($filtros, 'l');
+
+        // LEFT JOIN com subquery agregada para evitar N+1 e manter LIMIT correto
+        // (decisão #1: cada linha em exportacoes_hyb_itens = uma baixa efetiva).
+        $sql = "SELECT l.*, COALESCE(b.qtd_baixas, 0) AS qtd_baixas
+                FROM livros l
+                LEFT JOIN (
+                    SELECT livro_id, COUNT(*) AS qtd_baixas
+                    FROM exportacoes_hyb_itens
+                    GROUP BY livro_id
+                ) b ON b.livro_id = l.id
+                {$where}
+                ORDER BY l.atualizado_em DESC
+                LIMIT :limite OFFSET :offset";
+
         $stmt = $this->pdo->prepare($sql);
         foreach ($params as $k => $v) {
             $stmt->bindValue($k, $v);
@@ -250,25 +265,26 @@ final class MySqlLivroRepository implements LivroRepository
     // Helpers privados
     // ---------------------------------------------------------------
 
-    private function montarWhere(array $filtros): array
+    private function montarWhere(array $filtros, ?string $alias = null): array
     {
         $where = [];
         $params = [];
+        $prefix = $alias !== null ? $alias . '.' : '';
 
         if (!empty($filtros['busca'])) {
-            $where[] = '(titulo LIKE :busca OR isbn_13 LIKE :busca OR isbn_10 LIKE :busca OR autores LIKE :busca)';
+            $where[] = "({$prefix}titulo LIKE :busca OR {$prefix}isbn_13 LIKE :busca OR {$prefix}isbn_10 LIKE :busca OR {$prefix}autores LIKE :busca)";
             $params[':busca'] = '%' . $filtros['busca'] . '%';
         }
         if (!empty($filtros['editora'])) {
-            $where[] = 'editora = :editora';
+            $where[] = "{$prefix}editora = :editora";
             $params[':editora'] = $filtros['editora'];
         }
         if (!empty($filtros['ano'])) {
-            $where[] = 'ano_publicacao = :ano';
+            $where[] = "{$prefix}ano_publicacao = :ano";
             $params[':ano'] = (int) $filtros['ano'];
         }
         if (!empty($filtros['idioma'])) {
-            $where[] = 'idioma = :idioma';
+            $where[] = "{$prefix}idioma = :idioma";
             $params[':idioma'] = $filtros['idioma'];
         }
 
@@ -337,9 +353,10 @@ final class MySqlLivroRepository implements LivroRepository
             patrimonio:           $row['hyb_patrimonio'],
             depreciacaoPct:       $row['hyb_depreciacao_pct'] !== null ? (float) $row['hyb_depreciacao_pct'] : null,
             tipo:                 $row['hyb_tipo'],
-            estoqueInicialQtd:    $row['hyb_estoque_ini_qtd'] !== null ? (float) $row['hyb_estoque_ini_qtd'] : null,
+            estoqueInicialQtd:    $row['hyb_estoque_ini_qtd'] !== null ? (int) $row['hyb_estoque_ini_qtd'] : null,
             estoqueInicialCusto:  $row['hyb_estoque_ini_custo'] !== null ? (float) $row['hyb_estoque_ini_custo'] : null,
             descricao:            $row['hyb_descricao'],
+            categoriaId:          isset($row['categoria_id']) && $row['categoria_id'] !== null ? (int) $row['categoria_id'] : null,
         );
 
         return new Livro(
@@ -349,6 +366,9 @@ final class MySqlLivroRepository implements LivroRepository
             consultadoEm: $row['consultado_em'],
             atualizadoEm: $row['atualizado_em'],
             exportadoEm: $row['exportado_em'],
+            // qtd_baixas só vem na query da listagem (LEFT JOIN com itens).
+            // Outros pontos (buscarPorId, etc.) deixam null → toArray() coalesce p/ 0.
+            qtdBaixas: isset($row['qtd_baixas']) ? (int) $row['qtd_baixas'] : null,
         );
     }
 

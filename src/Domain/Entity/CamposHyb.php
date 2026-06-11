@@ -6,6 +6,16 @@ namespace App\Domain\Entity;
 /**
  * Campos complementares HYB preenchidos pelo operador.
  * Todos opcionais — null = célula vazia no XLSX e NULL no banco.
+ *
+ * Notas de evolução:
+ *  - `categoriaId` é a FK lógica para a tabela `categoria` (decisão #11).
+ *    Quando preenchido, é a fonte de verdade; o mapeador para HYB resolve
+ *    o nome (`categoria.descricao`) na hora do export.
+ *  - `categoria` (string) é mantido como snapshot textual legado e fallback
+ *    para registros antigos que ainda não possuem `categoriaId`.
+ *  - `estoqueInicialQtd` passou a ser `int` (decisão #5): representa
+ *    exemplares físicos editáveis. O banco mantém DECIMAL(15,4) por
+ *    compatibilidade — a leitura como int trunca naturalmente.
  */
 final class CamposHyb
 {
@@ -20,10 +30,32 @@ final class CamposHyb
         public readonly ?string $patrimonio = null,
         public readonly ?float $depreciacaoPct = null,
         public readonly ?string $tipo = null,
-        public readonly ?float $estoqueInicialQtd = null,
+        public readonly ?int $estoqueInicialQtd = null,
         public readonly ?float $estoqueInicialCusto = null,
         public readonly ?string $descricao = null,
+        public readonly ?int $categoriaId = null,
     ) {}
+
+    public function getCategoriaId(): ?int
+    {
+        return $this->categoriaId;
+    }
+
+    /**
+     * Alias para getEstoqueInicialQtd() — exemplares físicos (decisão #5).
+     *
+     * @deprecated use $this->estoqueInicialQtd diretamente; mantido para
+     *             expressar intenção semântica nas camadas superiores.
+     */
+    public function getQuantidade(): ?int
+    {
+        return $this->estoqueInicialQtd;
+    }
+
+    public function getEstoqueInicialQtd(): ?int
+    {
+        return $this->estoqueInicialQtd;
+    }
 
     public function toArray(): array
     {
@@ -31,6 +63,7 @@ final class CamposHyb
             'bem_produto'       => $this->bemProduto,
             'unidade'           => $this->unidade,
             'categoria'         => $this->categoria,
+            'categoria_id'      => $this->categoriaId,
             'ncm'               => $this->ncm,
             'preco_venda'       => $this->precoVenda,
             'estoque_minimo'    => $this->estoqueMinimo,
@@ -71,9 +104,10 @@ final class CamposHyb
             patrimonio:           $get($dados, 'patrimonio')          !== null ? strtoupper((string) $get($dados, 'patrimonio')) : null,
             depreciacaoPct:       $toFloat($get($dados, 'depreciacao_pct')),
             tipo:                 $get($dados, 'tipo')                !== null ? (string) $get($dados, 'tipo') : null,
-            estoqueInicialQtd:    $toFloat($get($dados, 'estoque_ini_qtd')),
+            estoqueInicialQtd:    $toInt($get($dados, 'estoque_ini_qtd')),
             estoqueInicialCusto:  $toFloat($get($dados, 'estoque_ini_custo')),
             descricao:            $get($dados, 'descricao')           !== null ? (string) $get($dados, 'descricao') : null,
+            categoriaId:          $toInt($get($dados, 'categoria_id')),
         );
     }
 

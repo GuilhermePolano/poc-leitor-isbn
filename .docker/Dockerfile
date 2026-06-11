@@ -27,7 +27,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Configuração customizada do Apache (DocumentRoot=public + Alias /api)
 COPY apache-vhost.conf /etc/apache2/sites-available/000-default.conf
-RUN a2enmod rewrite headers
+RUN a2enmod ssl rewrite headers
 
 # Entrypoint que instala dependências e inicia o Apache
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh

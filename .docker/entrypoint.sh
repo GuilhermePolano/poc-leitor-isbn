@@ -16,4 +16,16 @@ fi
 chown -R www-data:www-data storage logs 2>/dev/null || true
 chmod -R 0775 storage logs 2>/dev/null || true
 
+# Gera certificado autoassinado para HTTPS em dev caso ainda não exista
+if [ ! -f /etc/ssl/certs/app.crt ]; then
+    echo "[entrypoint] Gerando certificado autoassinado para HTTPS..."
+    mkdir -p /etc/ssl/private
+    openssl req -x509 -nodes -newkey rsa:2048 \
+        -keyout /etc/ssl/private/app.key \
+        -out /etc/ssl/certs/app.crt \
+        -days 365 \
+        -subj "/CN=localhost"
+    chmod 640 /etc/ssl/private/app.key
+fi
+
 exec "$@"

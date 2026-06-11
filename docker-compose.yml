@@ -32,6 +32,7 @@ services:
       - .:/var/www/html
     ports:
       - "8080:80"
+      - "8443:443"
 
 volumes:
   db_data:

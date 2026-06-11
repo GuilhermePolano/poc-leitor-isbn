@@ -31,9 +31,7 @@ declare(strict_types=1);
             </div>
 
             <div class="barra-acoes">
-                <a href="../api/exportar.php" class="btn btn-primario">📥 Exportar todos para HYB.xlsx</a>
-                <a href="../api/exportar.php?apenas_nao_exportados=1" class="btn">📥 Apenas não exportados</a>
-                <button id="btn-exportar-sel" class="btn" type="button">📥 Exportar selecionados</button>
+                <button id="btn-abrir-modal-export" class="btn btn-primario" type="button">📥 Exportar para HYB</button>
             </div>
 
             <div class="tabela-wrap">
@@ -63,6 +61,51 @@ declare(strict_types=1);
             </nav>
         </section>
     </main>
+
+    <dialog id="modal-export" hidden>
+        <header class="modal-header">
+            <h2>📥 Exportar para HYB</h2>
+            <button type="button" class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">×</button>
+        </header>
+
+        <div class="modal-toolbar">
+            <input type="search" id="modal-busca" placeholder="Buscar por título, autor ou ISBN…">
+            <select id="modal-filtro-baixa">
+                <option value="todos">Mostrar todos</option>
+                <option value="nao_baixados" selected>Não baixados</option>
+                <option value="ja_baixados">Já baixados</option>
+            </select>
+            <label class="modal-check-todos">
+                <input type="checkbox" id="modal-check-todos"> Selecionar todos
+            </label>
+        </div>
+
+        <div class="modal-tabela-wrap">
+            <table id="tabela-modal-export">
+                <thead>
+                    <tr>
+                        <th style="width: 32px;">✓</th>
+                        <th style="width: 52px;">Capa</th>
+                        <th>Título</th>
+                        <th>Autores</th>
+                        <th>ISBN-13</th>
+                        <th>Última baixa</th>
+                        <th style="width: 80px;">Qtd</th>
+                    </tr>
+                </thead>
+                <tbody id="modal-tbody">
+                    <tr><td colspan="7" class="vazio">Carregando…</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="modal-footer">
+            <span id="modal-contador">0 selecionados de 0</span>
+            <button type="button" id="btn-gerar-xlsx" class="btn btn-primario" disabled>
+                Gerar XLSX (<span id="modal-contador-botao">0</span> livros)
+            </button>
+        </footer>
+    </dialog>
 
     <div id="toast" class="toast hidden"></div>
     <script src="assets/js/lista.js"></script>

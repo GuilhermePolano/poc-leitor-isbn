@@ -61,6 +61,12 @@ body {
 }
 
 .card-bipagem label { display: block; margin-bottom: 8px; }
+.linha-bipagem {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+}
+.linha-bipagem #campo-isbn { flex: 1; }
 #campo-isbn {
     width: 100%;
     padding: 14px 16px;
@@ -289,3 +295,265 @@ body {
     .grid-hyb { grid-template-columns: 1fr; }
     .grid-hyb label.span-2 { grid-column: span 1; }
 }
+
+/* Modal Exportar para HYB */
+#modal-export {
+    width: 90vw;
+    max-width: 1200px;
+    max-height: 85vh;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    color: var(--text);
+    font-family: var(--font);
+    background: var(--surface);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+#modal-export[hidden] { display: none; }
+#modal-export::backdrop { background: rgba(0,0,0,0.5); }
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+.modal-header h2 { margin: 0; font-size: 1.15rem; }
+.modal-fechar {
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--muted);
+    padding: 0 8px;
+    border-radius: 4px;
+}
+.modal-fechar:hover { color: var(--text); background: #f3f4f6; }
+
+.modal-toolbar {
+    display: flex;
+    gap: 12px;
+    padding: 12px 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    background: #fafbfc;
+}
+.modal-toolbar input[type="search"],
+.modal-toolbar select {
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font: inherit;
+    background: #fff;
+    color: var(--text);
+}
+.modal-toolbar input[type="search"] { flex: 1; min-width: 220px; }
+.modal-toolbar input:focus,
+.modal-toolbar select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(31,111,235,0.15);
+}
+.modal-check-todos {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.92rem;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.modal-tabela-wrap {
+    flex: 1;
+    overflow: auto;
+    padding: 0 20px;
+}
+
+#tabela-modal-export {
+    width: 100%;
+    border-collapse: collapse;
+}
+#tabela-modal-export thead th {
+    position: sticky;
+    top: 0;
+    background: #fafbfc;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.88rem;
+    z-index: 1;
+}
+#tabela-modal-export th,
+#tabela-modal-export td {
+    padding: 8px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: middle;
+    font-size: 0.92rem;
+}
+#tabela-modal-export tbody tr:hover { background: #f7f9fb; }
+#tabela-modal-export td.vazio {
+    text-align: center;
+    color: var(--muted);
+    padding: 24px;
+}
+#tabela-modal-export img.capa-mini {
+    width: 32px;
+    height: 46px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    display: block;
+}
+#tabela-modal-export td.qtd input {
+    width: 60px;
+    padding: 4px 6px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font: inherit;
+    text-align: center;
+}
+#tabela-modal-export td.qtd input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.modal-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.04);
+}
+.modal-footer #modal-contador {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+/* Câmera — leitor de código de barras via BarcodeDetector */
+#overlay-camera {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#overlay-camera[hidden] { display: none; }
+.camera-modal {
+    background: #111;
+    padding: 16px;
+    border-radius: 8px;
+    max-width: 95vw;
+    position: relative;
+}
+.camera-viewport {
+    position: relative;
+    width: min(720px, 92vw);
+    background: #000;
+    border-radius: 4px;
+    overflow: hidden;
+    /* Garante uma altura mínima razoável enquanto a câmera carrega. */
+    min-height: 280px;
+}
+/* Quagga2 injeta <video> + <canvas> dentro do viewport, ambos com class drawingBuffer.
+   Forçamos os filhos a ocuparem 100% da largura e mantermos o aspecto do vídeo. */
+.camera-viewport video,
+.camera-viewport canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+}
+.camera-viewport canvas.drawingBuffer {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.camera-guia {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 50%;
+    height: 3px;
+    background: red;
+    box-shadow: 0 0 8px red;
+    transform: translateY(-1px);
+    pointer-events: none;
+    z-index: 5;
+}
+.camera-msg {
+    color: #ddd;
+    text-align: center;
+    margin: 12px 0 8px;
+    font-size: 14px;
+}
+.camera-msg.camera-msg-procurando {
+    color: #ffe066;
+    animation: camera-piscar 1.2s ease-in-out infinite;
+}
+@keyframes camera-piscar {
+    0%, 100% { opacity: 0.55; }
+    50%      { opacity: 1;    }
+}
+.camera-dicas {
+    color: #cfcfcf;
+    text-align: center;
+    margin: 4px auto 12px;
+    max-width: 560px;
+    font-size: 13px;
+    line-height: 1.45;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid #ffe066;
+    border-radius: 4px;
+}
+.camera-acoes {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+#btn-fechar-camera,
+#btn-digitar-manualmente {
+    padding: 8px 20px;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+#btn-fechar-camera {
+    background: #c00;
+    color: #fff;
+}
+#btn-digitar-manualmente {
+    background: #2563eb;
+    color: #fff;
+}
+#btn-fechar-camera:hover     { background: #a00; }
+#btn-digitar-manualmente:hover { background: #1d4ed8; }
+.btn-camera {
+    font-size: 20px;
+    padding: 6px 12px;
+    margin-left: 4px;
+    cursor: pointer;
+    background: #fff;
+    border: 2px solid var(--primary);
+    border-radius: var(--radius);
+    color: var(--text);
+    transition: background 120ms;
+}
+.btn-camera:hover { background: #eef4ff; }

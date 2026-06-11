@@ -10,6 +10,17 @@ use App\Domain\ValueObject\Preco;
  * Modelo unificado retornado pelos adaptadores de IsbnProvider.
  * Cada cliente (BrasilAPI, Google Books, Open Library) converte sua
  * resposta crua para este formato antes de devolver ao domínio.
+ *
+ * Campos novos (Extra E1 — enriquecimento de APIs):
+ *   - contributors: array de [role, name] (tradutor, ilustrador, editor, etc.)
+ *   - maturityRating: classificação etária ('NOT_MATURE' | 'MATURE' | null)
+ *   - mainCategory: categoria principal sugerida pelo provider
+ *   - physicalFormat: formato físico cru do provider (Hardcover, Paperback, etc.)
+ *   - editionName: nome/identificação da edição (1st edition, edição revisada, ...)
+ *   - series: nome da série/coleção, quando informado
+ *
+ * Importante: os parâmetros novos são opcionais e estão NO FINAL do construtor
+ * para não quebrar chamadas posicionais existentes.
  */
 final class DadosBibliograficos
 {
@@ -41,6 +52,13 @@ final class DadosBibliograficos
         public readonly ?string $providerOrigem = null,
         public readonly ?string $consultadoEm = null,
         public readonly ?array $payloadBruto = null,
+        // ---- Extra E1: enriquecimento ----
+        public readonly array $contributors = [],
+        public readonly ?string $maturityRating = null,
+        public readonly ?string $mainCategory = null,
+        public readonly ?string $physicalFormat = null,
+        public readonly ?string $editionName = null,
+        public readonly ?string $series = null,
     ) {}
 
     public function toArray(): array
@@ -72,6 +90,13 @@ final class DadosBibliograficos
             'fonte_api'        => $this->fonteApi,
             'provider_origem'  => $this->providerOrigem,
             'consultado_em'    => $this->consultadoEm,
+            // ---- Extra E1 ----
+            'contributors'     => $this->contributors,
+            'maturity_rating'  => $this->maturityRating,
+            'main_category'    => $this->mainCategory,
+            'physical_format'  => $this->physicalFormat,
+            'edition_name'     => $this->editionName,
+            'series'           => $this->series,
         ];
     }
 }

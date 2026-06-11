@@ -5,13 +5,17 @@ namespace App\Infrastructure\Adapter\Out\IsbnProvider;
 
 use App\Domain\Entity\DadosBibliograficos;
 use App\Domain\Port\Out\IsbnProvider;
+use App\Domain\Service\IdiomaNormalizer;
 use App\Domain\ValueObject\Dimensoes;
 use App\Domain\ValueObject\ISBN;
 use App\Domain\ValueObject\Preco;
 
 final class BrasilApiClient implements IsbnProvider
 {
-    public function __construct(private readonly HttpClient $http) {}
+    public function __construct(
+        private readonly HttpClient $http,
+        private readonly IdiomaNormalizer $idiomaNormalizer,
+    ) {}
 
     public function nome(): string
     {
@@ -54,6 +58,11 @@ final class BrasilApiClient implements IsbnProvider
             default    => $formato,
         };
 
+        // ---- Extra E1: idioma normalizado (BCP-47). BrasilAPI raramente
+        // expõe 'language', então mantemos 'pt-BR' como default seguro. ----
+        $idiomaBruto = $j['language'] ?? 'pt-BR';
+        $idioma = $this->idiomaNormalizer->normalizar($idiomaBruto) ?? 'pt-BR';
+
         return new DadosBibliograficos(
             isbn13: $isbn->isbn13(),
             isbn10: $isbn->isbn10(),
@@ -63,7 +72,7 @@ final class BrasilApiClient implements IsbnProvider
             editora: $j['publisher'] ?? null,
             anoPublicacao: isset($j['year']) ? (int) $j['year'] : null,
             dataPublicacao: isset($j['year']) ? (string) $j['year'] : null,
-            idioma: 'pt-BR',
+            idioma: $idioma,
             paginas: isset($j['page_count']) ? (int) $j['page_count'] : null,
             sinopse: $j['synopsis'] ?? null,
             assuntos: (array) ($j['subjects'] ?? []),
@@ -82,6 +91,13 @@ final class BrasilApiClient implements IsbnProvider
             providerOrigem: $j['provider'] ?? null,
             consultadoEm: date('c'),
             payloadBruto: $j,
+            // ---- Extra E1 ---- (BrasilAPI não expõe estes campos)
+            contributors: [],
+            maturityRating: null,
+            mainCategory: null,
+            physicalFormat: null,
+            editionName: null,
+            series: null,
         );
     }
 }

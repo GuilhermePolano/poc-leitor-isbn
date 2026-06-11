@@ -69,6 +69,13 @@ final class NormalizadorDeLivro
             'linkPreview'      => $primeiro->linkPreview,
             'avaliacaoMedia'   => $primeiro->avaliacaoMedia,
             'qtdAvaliacoes'    => $primeiro->qtdAvaliacoes,
+            // ---- Extra E1: enriquecimento ----
+            'contributors'     => $primeiro->contributors,
+            'maturityRating'   => $primeiro->maturityRating,
+            'mainCategory'     => $primeiro->mainCategory,
+            'physicalFormat'   => $primeiro->physicalFormat,
+            'editionName'      => $primeiro->editionName,
+            'series'           => $primeiro->series,
         ];
 
         foreach (array_slice($registros, 1) as $r) {
@@ -105,6 +112,13 @@ final class NormalizadorDeLivro
             providerOrigem: $primeiro->providerOrigem,
             consultadoEm: $primeiro->consultadoEm,
             payloadBruto: $primeiro->payloadBruto,
+            // ---- Extra E1 ----
+            contributors: $valoresCampos['contributors'] ?? [],
+            maturityRating: $valoresCampos['maturityRating'],
+            mainCategory: $valoresCampos['mainCategory'],
+            physicalFormat: $valoresCampos['physicalFormat'],
+            editionName: $valoresCampos['editionName'],
+            series: $valoresCampos['series'],
         );
     }
 

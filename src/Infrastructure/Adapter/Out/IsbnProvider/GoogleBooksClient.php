@@ -5,6 +5,7 @@ namespace App\Infrastructure\Adapter\Out\IsbnProvider;
 
 use App\Domain\Entity\DadosBibliograficos;
 use App\Domain\Port\Out\IsbnProvider;
+use App\Domain\Service\IdiomaNormalizer;
 use App\Domain\Service\NormalizadorDeLivro;
 use App\Domain\ValueObject\Dimensoes;
 use App\Domain\ValueObject\ISBN;
@@ -15,6 +16,7 @@ final class GoogleBooksClient implements IsbnProvider
     public function __construct(
         private readonly HttpClient $http,
         private readonly NormalizadorDeLivro $normalizador,
+        private readonly IdiomaNormalizer $idiomaNormalizer,
         private readonly ?string $apiKey = null,
     ) {}
 
@@ -92,6 +94,13 @@ final class GoogleBooksClient implements IsbnProvider
             $ano = (int) $m[1];
         }
 
+        // ---- Extra E1: enriquecimento ----
+        $idioma = $this->idiomaNormalizer->normalizar($info['language'] ?? null);
+        $maturityRating = $info['maturityRating'] ?? null;
+        $mainCategory   = $info['mainCategory'] ?? (
+            isset($info['categories'][0]) ? (string) $info['categories'][0] : null
+        );
+
         return new DadosBibliograficos(
             isbn13: $isbn->isbn13(),
             isbn10: $isbn10 ?? $isbn->isbn10(),
@@ -101,7 +110,7 @@ final class GoogleBooksClient implements IsbnProvider
             editora: $info['publisher'] ?? null,
             anoPublicacao: $ano,
             dataPublicacao: $data,
-            idioma: $info['language'] ?? null,
+            idioma: $idioma,
             paginas: isset($info['pageCount']) ? (int) $info['pageCount'] : null,
             sinopse: $info['description'] ?? null,
             assuntos: [],
@@ -120,6 +129,13 @@ final class GoogleBooksClient implements IsbnProvider
             providerOrigem: 'google_books',
             consultadoEm: date('c'),
             payloadBruto: $j['items'][0] ?? null,
+            // ---- Extra E1 ----
+            contributors: [],
+            maturityRating: is_string($maturityRating) ? $maturityRating : null,
+            mainCategory: is_string($mainCategory) ? $mainCategory : null,
+            physicalFormat: null,
+            editionName: null,
+            series: null,
         );
     }
 

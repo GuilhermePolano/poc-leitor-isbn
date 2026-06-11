@@ -56,7 +56,7 @@ try {
                 'tipo'              => $defs['tipo'],
                 'estoque_ini_qtd'   => $defs['estoque_ini_qtd'],
                 'estoque_ini_custo' => '',
-                'descricao'         => gerarDescricaoSimples($livro),
+                'descricao'         => $container->geradorDescricao()->gerarDeArray($livro),
             ];
         }
         echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
@@ -73,23 +73,13 @@ try {
     ], JSON_UNESCAPED_UNICODE);
 }
 
+/**
+ * @deprecated desde Fase 2.3 (M16). Mantida só como retro-compatibilidade caso
+ * algum script externo importe este arquivo. A geração de descrição agora
+ * acontece em App\Domain\Service\GeradorDescricaoLivro (via container).
+ */
 function gerarDescricaoSimples(array $livro): string
 {
-    $partes = [];
-    if (!empty($livro['autores'])) {
-        $partes[] = 'Autor(es): ' . implode(', ', (array) $livro['autores']) . '.';
-    }
-    if (!empty($livro['editora'])) {
-        $partes[] = 'Editora: ' . $livro['editora'] . '.';
-    }
-    if (!empty($livro['ano_publicacao'])) {
-        $partes[] = 'Ano: ' . $livro['ano_publicacao'] . '.';
-    }
-    if (!empty($livro['paginas'])) {
-        $partes[] = 'Páginas: ' . $livro['paginas'] . '.';
-    }
-    if (!empty($livro['sinopse'])) {
-        $partes[] = 'Sinopse: ' . trim((string) $livro['sinopse']);
-    }
-    return implode(' ', $partes);
+    $container = require __DIR__ . '/../bootstrap/container.php';
+    return $container->geradorDescricao()->gerarDeArray($livro);
 }

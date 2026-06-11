@@ -1,0 +1,1406 @@
+[
+    {
+        "name": "Dados",
+        "highestRow": 30,
+        "highestColumn": "O",
+        "highestColumnIndex": 15,
+        "merges": [],
+        "comments": [
+            {
+                "cell": "A1",
+                "text": "Bem\/Produto\nInformar somente se desejar realizar a edição de um Bem\/Produto (que será identificado por este campo) \n     \n O Sistema irá identificar o Bem\/Produto das seguintes opções:     \n 1) numero - Identificará pelo Código do Bem\/Produto  no HYB     \n\n Exemplo:     \n  1000 - Buscará o Bem\/Produto com Código = '1000' no HYB     \n",
+                "author": "cechin"
+            },
+            {
+                "cell": "D1",
+                "text": "Categoria dos bens:\nO sistema buscará pelo nome registrado da categoria ou pelo ID.",
+                "author": "prg2"
+            },
+            {
+                "cell": "L1",
+                "text": "tipo do bem:\nopções possíveis:\nDesconhecido\nMóvel\nImóvel",
+                "author": "prg2"
+            }
+        ],
+        "header": [
+            {
+                "letter": "A",
+                "rawValue": "Bem\/Produto",
+                "formattedValue": "Bem\/Produto",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "B",
+                "rawValue": "Titulo",
+                "formattedValue": "Titulo",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "C",
+                "rawValue": "Unidade",
+                "formattedValue": "Unidade",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "D",
+                "rawValue": "Categoria",
+                "formattedValue": "Categoria",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "E",
+                "rawValue": "Código de Barras (EAN)",
+                "formattedValue": "Código de Barras (EAN)",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "F",
+                "rawValue": "NCM",
+                "formattedValue": "NCM",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "G",
+                "rawValue": "Preço de Venda",
+                "formattedValue": "Preço de Venda",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "H",
+                "rawValue": "Estoque Mínimo",
+                "formattedValue": "Estoque Mínimo",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "I",
+                "rawValue": "Referência",
+                "formattedValue": "Referência",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "J",
+                "rawValue": "Patrimônio(S,N)",
+                "formattedValue": "Patrimônio(S,N)",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "K",
+                "rawValue": "Depreciação(%)",
+                "formattedValue": "Depreciação(%)",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "L",
+                "rawValue": "Tipo",
+                "formattedValue": "Tipo",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "M",
+                "rawValue": "  Estoque Inicial  -Quantidade",
+                "formattedValue": "  Estoque Inicial  -Quantidade",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "N",
+                "rawValue": "  Estoque Inicial  - Custo Unitário ",
+                "formattedValue": "  Estoque Inicial  - Custo Unitário ",
+                "calculatedValue": null,
+                "dataType": "s"
+            },
+            {
+                "letter": "O",
+                "rawValue": "Descrição",
+                "formattedValue": "Descrição",
+                "calculatedValue": null,
+                "dataType": "s"
+            }
+        ],
+        "rows": [
+            {
+                "__row": 2,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 3,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 4,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 5,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 6,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 7,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 8,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 9,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 10,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 11,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 12,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 13,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 14,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 15,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "B": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "C": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "D": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "E": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "F": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "G": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "H": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "I": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "J": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "K": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "L": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "M": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "N": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "O": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            }
+        ],
+        "columnFormats": {
+            "A": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            },
+            "B": {
+                "numberFormat": "m\/d\/yyyy",
+                "dataType_row2": "null"
+            },
+            "C": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            },
+            "D": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            },
+            "E": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            },
+            "F": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            },
+            "G": {
+                "numberFormat": "_-\"R$\"\\ * #,##0.00_-;\\-\"R$\"\\ * #,##0.00_-;_-\"R$\"\\ * \"-\"??_-;_-@_-",
+                "dataType_row2": "null"
+            },
+            "H": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            },
+            "I": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            },
+            "J": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            },
+            "K": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            },
+            "L": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            },
+            "M": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            },
+            "N": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            },
+            "O": {
+                "numberFormat": "General",
+                "dataType_row2": "null"
+            }
+        },
+        "dataValidations": [],
+        "freezePane": null,
+        "columnWidths": {
+            "A": 15.85546875,
+            "B": 24.7109375,
+            "C": 8.5703125,
+            "D": 24.140625,
+            "E": 21.7109375,
+            "F": 13,
+            "G": 16.140625,
+            "H": 17.5703125,
+            "I": 13.140625,
+            "J": 20.7109375,
+            "K": 20.140625,
+            "L": 18.42578125,
+            "M": 34.5703125,
+            "N": 36.7109375,
+            "O": 34.85546875
+        }
+    },
+    {
+        "name": "Legenda de Cores",
+        "highestRow": 7,
+        "highestColumn": "A",
+        "highestColumnIndex": 1,
+        "merges": [],
+        "comments": [],
+        "header": [
+            {
+                "letter": "A",
+                "rawValue": "Legendas das cores",
+                "formattedValue": "Legendas das cores",
+                "calculatedValue": null,
+                "dataType": "s"
+            }
+        ],
+        "rows": [
+            {
+                "__row": 2,
+                "A": {
+                    "raw": "Obrigatório",
+                    "formatted": "Obrigatório",
+                    "type": "s"
+                },
+                "__isEmpty": false
+            },
+            {
+                "__row": 3,
+                "A": {
+                    "raw": "Obrigatório em alguns casos(dependendo de outros dados)",
+                    "formatted": "Obrigatório em alguns casos(dependendo de outros dados)",
+                    "type": "s"
+                },
+                "__isEmpty": false
+            },
+            {
+                "__row": 4,
+                "A": {
+                    "raw": "Obrigatório somente na edição",
+                    "formatted": "Obrigatório somente na edição",
+                    "type": "s"
+                },
+                "__isEmpty": false
+            },
+            {
+                "__row": 5,
+                "A": {
+                    "raw": "Não obrigatório",
+                    "formatted": "Não obrigatório",
+                    "type": "s"
+                },
+                "__isEmpty": false
+            },
+            {
+                "__row": 6,
+                "A": {
+                    "raw": null,
+                    "formatted": "",
+                    "type": "null"
+                },
+                "__isEmpty": true
+            },
+            {
+                "__row": 7,
+                "A": {
+                    "raw": "* Clique  no canto superior direito da célula para detalhes sobre o campo",
+                    "formatted": "* Clique  no canto superior direito da célula para detalhes sobre o campo",
+                    "type": "s"
+                },
+                "__isEmpty": false
+            }
+        ],
+        "columnFormats": {
+            "A": {
+                "numberFormat": "General",
+                "dataType_row2": "s"
+            }
+        },
+        "dataValidations": [],
+        "freezePane": null,
+        "columnWidths": {
+            "A": 56.7109375
+        }
+    }
+]

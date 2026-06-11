@@ -1,0 +1,122 @@
+{
+    "headerColors": {
+        "A": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "B": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "C": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "D": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "E": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "F": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "G": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "H": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "I": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "J": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "K": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "L": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "M": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "N": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "O": {
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        }
+    },
+    "legendColors": {
+        "2": {
+            "text": "Obrigatório",
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "3": {
+            "text": "Obrigatório em alguns casos(dependendo de outros dados)",
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "4": {
+            "text": "Obrigatório somente na edição",
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "5": {
+            "text": "Não obrigatório",
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "6": {
+            "text": null,
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        },
+        "7": {
+            "text": {},
+            "fillType": "none",
+            "startColor": "FFFFFFFF",
+            "endColor": "FF000000"
+        }
+    },
+    "sheetNames": [
+        "Dados",
+        "Legenda de Cores"
+    ],
+    "activeSheet": 1
+}
